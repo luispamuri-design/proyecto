@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 import os
 from pathlib import Path
 import dj_database_url
+from urllib.parse import urlparse
 ###from dotenv import load_dotenv
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -29,7 +30,8 @@ SECRET_KEY = 'django-insecure-mmm)&ec+(mymnuxtqz$o4*h^hvdha!3kji#ny-n$+0a(*m6+en
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get("DEBUG", "False") == "True"
+
+DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
 ALLOWED_HOSTS = ['.vercel.app', 'localhost', '127.0.0.1']
 
@@ -95,7 +97,7 @@ if DEBUG:
 else: 
      DATABASES = {
         'default': dj_database_url.config(
-        default=os.environ.get("postgresql://neondb_owner:npg_urQo0Ui4cwXI@ep-sweet-resonance-ac4prc9g-pooler.sa-east-1.aws.neon.tech/veterinaria_db?sslmode=require&channel_binding=require"),
+        default=os.environ.get("DATABASE_URL"),
         conn_max_age=600,
         ssl_require=True
     )
