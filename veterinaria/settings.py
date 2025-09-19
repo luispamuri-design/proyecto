@@ -37,8 +37,7 @@ ALLOWED_HOSTS = ['.vercel.app', 'localhost', '127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
-    'proyecto'
-    #'proyecto.apps.ProyectoConfig',
+    'proyecto.apps.ProyectoConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
