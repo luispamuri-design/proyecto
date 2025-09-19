@@ -1,14 +1,15 @@
 {
-    "builds" : [
-        {
-            "src": "veterinria/wsgi.py",
-            "use": "@vercel/python"
-        }
-    ],
-    "routes": [
-        {
-            "src": "/(.*)",
-            "dest": "veterinaria/wsgi.py"
-        }
-    ]
+  "version": 2,
+  "builds": [
+    {
+      "src": "veterinaria/wsgi.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "veterinaria/wsgi.py"
+    }
+  ]
 }

@@ -4,8 +4,9 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, get_user_model, logout
 from django.contrib.auth.decorators import login_required 
 
-
 User = get_user_model()
+# Create your views here.
+
 def vista_login(request):
     return render(request, 'Login/index.html')
 
@@ -48,4 +49,3 @@ def custom_logout(request):
 def vista_usuario(request):
    # tipos=Tipo.objects.exclude(nombre_in=['root','cliente'])
     return render(request, 'usuario/index.html',{'usuario': request.user})
-# Create your views here.
