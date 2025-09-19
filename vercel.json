@@ -1,0 +1,14 @@
+{
+    "builds" : [
+        {
+            "src": "veterinria/wsgi.py",
+            "use": "@vercel/python"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "veterinaria/wsgi.py"
+        }
+    ]
+}
