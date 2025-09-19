@@ -37,7 +37,8 @@ ALLOWED_HOSTS = ['.vercel.app', 'localhost', '127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
-    'proyecto.apps.ProyectoConfig',
+    'proyecto'
+    #'proyecto.apps.ProyectoConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -74,7 +75,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'veterinaria.wsgi.app'
+WSGI_APPLICATION = 'veterinaria.wsgi.application'
 
 
 # Database
