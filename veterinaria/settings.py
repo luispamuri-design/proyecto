@@ -81,29 +81,20 @@ WSGI_APPLICATION = 'veterinaria.wsgi.application'
 
 
 # Database
+
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
-if DEBUG:
-     
-     DATABASES = {
+DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-       'NAME':'veterinaria_db',
+       'NAME':'railway',
         'USER': 'root',  # Usuario de MySQL
-    	'PASSWORD': '',  # Cambia por tu contraseña
-    	'HOST': 'localhost',  # Servidor de BD
-   	    'PORT': '3306',  # Puerto de MySQL (por defecto)
+    	'PASSWORD': 'oWVQupBaKqblTTjoOQodYqIzjwWEhncR',  # Cambia por tu contraseña
+    	'HOST': 'trolley.proxy.rlwy.net',  # Servidor de BD
+   	    'PORT': '34632',  # Puerto de MySQL (por defecto)
 
     }
 }
-else: 
-     DATABASES = {
-        'default': dj_database_url.config(
-        default=os.environ.get("DATABASE_URL"),
-        conn_max_age=600,
-        ssl_require=True
-    )
-    
-}
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
