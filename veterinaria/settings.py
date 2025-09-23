@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 import os
 from pathlib import Path
 import dj_database_url
-
+from pathlib import Path
 ###from dotenv import load_dotenv
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +25,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 ###SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY') 
 ###if not SECRET_KEY:
     ###raise Exception('SECRET_KEY no encontrada. Revisa tu .env')
-SECRET_KEY = 'django-insecure-mmm)&ec+(mymnuxtqz$o4*h^hvdha!3kji#ny-n$+0a(*m6+en'
+##SECRET_KEY = 'django-insecure-mmm)&ec+(mymnuxtqz$o4*h^hvdha!3kji#ny-n$+0a(*m6+en'
+SECRET_KEY = os.environ.get('SECRET_KEY', 'fallback-secret-key-for-dev')
 
 
 
