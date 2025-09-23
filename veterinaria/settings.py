@@ -30,11 +30,15 @@ SECRET_KEY = 'django-insecure-mmm)&ec+(mymnuxtqz$o4*h^hvdha!3kji#ny-n$+0a(*m6+en
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+##DEBUG = True
 
-DEBUG = os.environ.get('DEBUG', 'False') == 'True'
+##DEBUG = os.environ.get('DEBUG', 'False') == 'True'
+DEBUG = 'RENDER' not in os.environ
 
 ALLOWED_HOSTS = ['.vercel.app', 'localhost', '127.0.0.1']
+RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
+if RENDER_EXTERNAL_HOSTNAME:
+    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
 
 # Application definition
