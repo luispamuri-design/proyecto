@@ -60,6 +60,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'veterinaria.wsgi.application'
+
 if os.environ.get('DATABASE_URL'):
     # Producción (Render)
     DATABASES = {
