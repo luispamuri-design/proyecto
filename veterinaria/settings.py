@@ -2,12 +2,13 @@ import os
 from pathlib import Path
 import dj_database_url
 
-# Rutas
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Seguridad
-SECRET_KEY = os.environ.get('SECRET_KEY', 'cambia_esta_clave_para_produccion')
-DEBUG = os.environ.get('DEBUG', 'False') == 'True'
+# Secret Key
+SECRET_KEY = os.environ.get('SECRET_KEY', 'fallback-secret-key-for-dev')
+
+# Debug
+DEBUG = 'RENDER' not in os.environ  # True local, False en Render
 
 # Hosts permitidos
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.onrender.com']
@@ -15,19 +16,21 @@ RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 if RENDER_EXTERNAL_HOSTNAME:
     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
-# Aplicaciones
+# Aplicaciones instaladas
 INSTALLED_APPS = [
+    'proyecto.apps.ProyectoConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'proyecto.apps.ProyectoConfig',
 ]
 
+# Middleware
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # Para servir estáticos en producción
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -41,7 +44,7 @@ ROOT_URLCONF = 'veterinaria.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],
+        'DIRS': [BASE_DIR / "proyecto" / "templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -56,14 +59,18 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'veterinaria.wsgi.application'
 
-# Base de datos usando la URL externa de Render
-DATABASES = {
-    'default': dj_database_url.config(
-        default=os.environ.get('DATABASE_URL')  # Render define DATABASE_URL
-    )
-}
+if os.environ.get('DATABASE_URL'):
+    # Producción (Render)
+    DATABASES = {
+        'default': dj_database_url.config(
+            default=os.environ['DATABASE_URL'],
+            conn_max_age=600,
+            ssl_require=True
+        )
+    }
 
-# Contraseñas y validaciones
+
+# Contraseñas
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',},
     {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',},
@@ -72,16 +79,21 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # Internacionalización
-LANGUAGE_CODE = 'es-mx'
-TIME_ZONE = 'America/Mexico_City'
+LANGUAGE_CODE = 'en-us'
+TIME_ZONE = 'UTC'
 USE_I18N = True
-USE_L10N = True
 USE_TZ = True
 
 # Archivos estáticos
 STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_DIRS = [BASE_DIR / 'static']
 
-# Media (opcional)
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+# Autenticación
+AUTH_USER_MODEL = 'proyecto.User'
+LOGIN_URL = 'custom_login'
+LOGOUT_REDIRECT_URL = 'custom_login'
+
+# Auto Field
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
