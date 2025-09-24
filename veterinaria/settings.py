@@ -9,7 +9,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'fallback-secret-key-for-dev')
 
 # Debug
 DEBUG = 'RENDER' not in os.environ # True local, False en Render
-DEBUG = os.environ.get('DEBUG', 'False') == 'True'  
+##DEBUG = os.environ.get('DEBUG', 'False') == 'True'  
 
 # Hosts permitidos
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.onrender.com', 'proyecto-q7up.onrender.com']
@@ -60,16 +60,17 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'veterinaria.wsgi.application'
-
 if os.environ.get('DATABASE_URL'):
     # Producción (Render)
     DATABASES = {
         'default': dj_database_url.config(
-            default=os.environ['DATABASE_URL'],
+            default=os.environ.get("DATABASE_URL"),
             conn_max_age=600,
             ssl_require=True
         )
     }
+
+
 
 
 # Contraseñas
