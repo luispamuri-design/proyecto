@@ -46,7 +46,7 @@ ROOT_URLCONF = 'veterinaria.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / "proyecto" / "templates"],
+        'DIRS': [BASE_DIR / 'proyecto' / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
