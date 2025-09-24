@@ -33,7 +33,7 @@ def custom_login(request):
             messages.error(request, 'Usuario o contraseña incorrectos.')
     return render(request, 'Login/index.html') 
 
-@login_required(login_url='custum_login')
+@login_required(login_url='custom_login')
 def home(request):
     return render(request, 'home/index.html', {'usuario': request.user})
 
@@ -45,7 +45,7 @@ def custom_logout(request):
     response['Expires'] = '0'
     return response
 
-@login_required(login_url='custum_login')
+@login_required(login_url='custom_login')
 def vista_usuario(request):
    # tipos=Tipo.objects.exclude(nombre_in=['root','cliente'])
     return render(request, 'usuario/index.html',{'usuario': request.user})
