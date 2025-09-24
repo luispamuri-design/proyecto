@@ -11,7 +11,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'fallback-secret-key-for-dev')
 DEBUG = 'RENDER' not in os.environ  # True local, False en Render
 
 # Hosts permitidos
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.onrender.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.onrender.com', 'proyecto-4350.onrender.com']
+
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 if RENDER_EXTERNAL_HOSTNAME:
     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
