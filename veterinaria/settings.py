@@ -1,7 +1,7 @@
 import os
 from pathlib import Path
 import dj_database_url
-
+from decouple import config
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Secret Key
@@ -10,6 +10,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'fallback-secret-key-for-dev')
 # Debug
 ##DEBUG = 'RENDER' not in os.environ # True local, False en Render
 DEBUG = os.environ.get('DEBUG', 'False') == 'True'  
+DEBUG = config('DEBUG', default=False, cast=bool)
 
 # Hosts permitidos
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.onrender.com', 'proyecto-q7up.onrender.com']
