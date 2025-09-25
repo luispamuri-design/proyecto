@@ -3,52 +3,86 @@
 Home
 {% endblock %}
 
-{% block content%}
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>Blank Page</h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Blank Page</li>
-            </ol>
-          </div>
-        </div>
-      </div><!-- /.container-fluid -->
-    </section>
+{% block content %}
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1>Bienvenido a Medic. Dog-Cat</h1>
+        <p>Hola {{ request.user.first_name }}! Aquí tienes un resumen de la clínica.</p>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a href="#"></a></li>
+          <li class="breadcrumb-item active"></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Main content -->
-    <section class="content">
+<!-- Main content -->
+<section class="content">
+  <div class="row">
 
-      <!-- Default box -->
-      <div class="card">
+    <!-- Tarjeta de horario de atención -->
+    <div class="col-md-4">
+      <div class="card bg-info text-white">
         <div class="card-header">
-          <h3 class="card-title">Title</h3>
-
-          <div class="card-tools">
-            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-              <i class="fas fa-minus"></i>
-            </button>
-            <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-              <i class="fas fa-times"></i>
-            </button>
-          </div>
+          <h3 class="card-title"><i class="fas fa-clock"></i> Horario de Atención</h3>
         </div>
         <div class="card-body">
-          Start creating your amazing application!
+          <p>Lunes a Viernes: 08:00 - 18:00</p>
+          <p>Sábado: 08:00 - 14:00</p>
+          <p>Domingo: Cerrado</p>
         </div>
-        <!-- /.card-body -->
-        <div class="card-footer">
-          Footer
-        </div>
-        <!-- /.card-footer-->
       </div>
-      <!-- /.card -->
+    </div>
 
-    </section>
-    <!-- /.content -->
-{% endblock content%}
+    <!-- Tarjeta de médicos disponibles -->
+    <div class="col-md-4">
+      <div class="card bg-success text-white">
+        <div class="card-header">
+          <h3 class="card-title"><i class="fas fa-user-md"></i> Médicos Disponibles</h3>
+        </div>
+        <div class="card-body">
+          <ul>
+            <li>Dr. Juan Pérez - Cardiología</li>
+            <li>Dra. Ana Gómez - Pediatría</li>
+            <li>Dr. Carlos Ruiz - Cirugía</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tarjeta de accesos rápidos -->
+    <div class="col-md-4">
+      <div class="card bg-warning text-dark">
+        <div class="card-header">
+          <h3 class="card-title"><i class="fas fa-link"></i> Accesos Rápidos</h3>
+        </div>
+        <div class="card-body">
+          <ul>
+            <li><a href="{% url 'vista_usuario' %}" class="text-dark">Gestionar Usuarios</a></li>
+            <li><a href="#" class="text-dark">Ver Citas</a></li>
+            <li><a href="#" class="text-dark">Registrar Cliente</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Tarjeta grande de bienvenida o noticias -->
+  <div class="card mt-3">
+    <div class="card-header bg-primary text-white">
+      <h3 class="card-title"><i class="fas fa-paw"></i> Noticias de la Clínica</h3>
+    </div>
+    <div class="card-body">
+      <p>¡Bienvenido al sistema de gestión de Medic. Dog-Cat! Aquí podrás consultar horarios, médicos disponibles, registrar clientes y gestionar usuarios según tus permisos.</p>
+    </div>
+  </div>
+
+</section>
+{% endblock content %}

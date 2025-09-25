@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% block title %}Inicio - Veterinaria{% endblock %}
+
+{% block content %}
+<section class="content pt-4">
+  <div class="container">
+    <div class="row mb-4">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-body">
+            <h3>Cuidamos la salud y felicidad de tu mascota</h3>
+            <p>Atendemos con cariño y profesionalismo: consultas, vacunas, cirugías menores, estética y urgencias.</p>
+            <a href="{% url 'book_appointment' %}" class="btn btn-agendar">Agendar cita</a>
+          </div>
+        </div>
+
+        <!-- Servicios -->
+        <div class="row mt-4">
+          <div class="col-12"><h4>Servicios</h4></div>
+
+          {% for svc in services %}
+          <div class="col-md-4 mt-3">
+            <div class="card h-100">
+              <div class="card-body text-center">
+                <i class="fas fa-paw fa-2x mb-2"></i>
+                <h5 class="card-title">{{ svc.name }}</h5>
+                <p class="card-text">{{ svc.short_description }}</p>
+                <a href="{% url 'book_appointment' %}?service={{ svc.id }}" class="btn btn-sm btn-primary">Reservar</a>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Lateral derecho: médicos, horario, contacto -->
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-header"><h5>Médicos disponibles</h5></div>
+          <div class="card-body">
+            {% for doc in doctors %}
+              <div class="d-flex align-items-center mb-2">
+                <img src="{% static 'img/medico1.jpg' %}" alt="doc" style="width:50px;height:50px;border-radius:50%" class="mr-2">
+                <div>
+                  <strong>{{ doc.name }}</strong><br>
+                  <small>{{ doc.specialty }} | {{ doc.shift }}</small>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+
+        <div class="card mt-3">
+          <div class="card-header"><h5>Horario de atención</h5></div>
+          <div class="card-body">
+            Lun - Vie: 08:00 - 18:00<br> Sáb: 08:00 - 13:00<br> Urgencias 24/7
+          </div>
+        </div>
+
+        <div class="card mt-3">
+          <div class="card-header"><h5>Contacto rápido</h5></div>
+          <div class="card-body">
+            <p>Tel: <a href="tel:+123456789">+1 234 567 89</a><br>
+            WhatsApp: <a href="https://wa.me/123456789?text=Hola">Enviar mensaje</a><br>
+            Dirección: Calle Falsa 123</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Sección consejos/blog -->
+    <div class="row mt-4">
+      <div class="col-12">
+        <h4>Consejos rápidos</h4>
+      </div>
+      {% for post in posts %}
+      <div class="col-md-4 mt-3">
+        <div class="card">
+          <div class="card-body">
+            <h5>{{ post.title }}</h5>
+            <p>{{ post.excerpt }}</p>
+            <a href="{% url 'blog_detail' post.id %}" class="btn btn-sm btn-outline-primary">Leer</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+{% endblock %}

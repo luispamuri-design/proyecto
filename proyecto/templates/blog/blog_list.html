@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}Consejos & Blog{% endblock %}
+
+{% block content %}
+<section class="content-header">
+    <div class="container-fluid">
+        <h1>Consejos & Blog</h1>
+        <p>Cuidamos la salud y felicidad de tu mascota.</p>
+    </div>
+</section>
+
+<section class="content">
+    <div class="row">
+        {% for post in posts %}
+        <div class="col-md-6">
+            <div class="card mb-3">
+                {% if post.image %}
+                <img src="{{ post.image.url }}" class="card-img-top" alt="{{ post.title }}">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ post.title }}</h5>
+                    <p class="card-text">{{ post.content|truncatewords:30 }}</p>
+                    <p class="text-muted">Publicado el {{ post.created_at|date:"d M Y" }}</p>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p>No hay publicaciones disponibles.</p>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

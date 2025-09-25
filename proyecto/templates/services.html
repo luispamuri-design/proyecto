@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}Servicios{% endblock %}
+
+{% block content %}
+<section class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-3">
+      <div class="col-sm-12 text-center">
+        <h1>Nuestros Servicios</h1>
+        <p>Conoce los servicios disponibles en nuestra veterinaria y los horarios de atención.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="content">
+  <div class="container">
+    <div class="row">
+      <!-- Card de ejemplo de servicio -->
+      <div class="col-md-4 mb-4">
+        <div class="card shadow-sm h-100">
+          <img src="{% static 'img/consulta.jpg' %}" class="card-img-top" alt="Consulta Veterinaria">
+          <div class="card-body">
+            <h5 class="card-title">Consulta Veterinaria</h5>
+            <p class="card-text">Revisión completa de tus mascotas con nuestro equipo profesional.</p>
+            <p><strong>Horario:</strong> Lunes a Viernes 9:00 - 18:00</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-4">
+        <div class="card shadow-sm h-100">
+          <img src="{% static 'img/vacunacion.jpg' %}" class="card-img-top" alt="Vacunación">
+          <div class="card-body">
+            <h5 class="card-title">Vacunación</h5>
+            <p class="card-text">Protege a tus mascotas con nuestro plan completo de vacunación.</p>
+            <p><strong>Horario:</strong> Martes y Jueves 10:00 - 16:00</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-4">
+        <div class="card shadow-sm h-100">
+          <img src="{% static 'img/baño.jpg' %}" class="card-img-top" alt="Baño y estética">
+          <div class="card-body">
+            <h5 class="card-title">Baño y Estética</h5>
+            <p class="card-text">Servicio completo de higiene y cuidado de la apariencia de tu mascota.</p>
+            <p><strong>Horario:</strong> Lunes a Sábado 9:00 - 17:00</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Puedes agregar más cards según los servicios -->
+    </div>
+  </div>
+</section>
+{% endblock %}

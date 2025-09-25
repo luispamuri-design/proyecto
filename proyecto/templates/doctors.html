@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Médicos Disponibles{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <h2 class="text-center mb-4">Médicos Disponibles Hoy</h2>
+    <p class="text-center mb-5">Cuidamos la salud y felicidad de tu mascota</p>
+
+    <div class="row">
+        <!-- Médico 1 -->
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm">
+                <img src="{% static 'img/medico1.jpg' %}" class="card-img-top" alt="Dr. Pérez">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Dr. Pérez</h5>
+                    <p class="card-text">Cardiología | 08:00 - 16:00</p>
+                    <a href="{% url 'agendar_cita' %}" class="btn btn-info btn-sm">Reservar</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Médico 2 -->
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm">
+                <img src="{% static 'img/medico2.jpg' %}" class="card-img-top" alt="Dra. Gómez">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Dra. Gómez</h5>
+                    <p class="card-text">Cirugía | 10:00 - 18:00</p>
+                    <a href="{% url 'agendar_cita' %}" class="btn btn-info btn-sm">Reservar</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Médico 3 -->
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm">
+                <img src="{% static 'img/medico3.jpg' %}" class="card-img-top" alt="Dra. Martínez">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Dra. Martínez</h5>
+                    <p class="card-text">Urgencias | 24h</p>
+                    <a href="{% url 'agendar_cita' %}" class="btn btn-info btn-sm">Reservar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+}
+.card-title {
+    font-weight: 600;
+}
+.btn-info {
+    background-color: #17a2b8;
+    border: none;
+}
+.btn-info:hover {
+    background-color: #138496;
+}
+</style>
+{% endblock %}
