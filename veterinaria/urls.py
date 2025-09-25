@@ -1,7 +1,7 @@
 
 
 from django.contrib import admin
-from proyecto import views
+from proyecto import views 
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
@@ -13,6 +13,7 @@ urlpatterns = [
     path('logout/', views.custom_logout, name='logout'),
     path('home', views.home, name='home'),
     path('vista_usuario', views.vista_usuario, name='vista_usuario'),
+    path('crear_usuario', views.crear_usuario, name='save_user'),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
